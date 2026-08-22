@@ -4,9 +4,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Coming Soon - Tekara Technology</title>
+
+    <!-- CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -96,11 +100,9 @@
             }
         }
     </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="{{ asset('css/coming-soon.css') }}">
 </head>
 <body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen">
     
@@ -120,7 +122,7 @@
                 </p>
             </div>
             
-            <!-- Spacer instead of countdown -->
+            <!-- Spacer -->
             <div class="my-stack-md"></div>
             
             <!-- Subscription Form -->
@@ -139,7 +141,8 @@
     <!-- Footer -->
     <footer class="bg-surface dark:bg-inverse-surface w-full mt-auto border-t border-surface-variant">
     </footer>
-    
 
+    <!-- Page Scripts -->
+    <script src="{{ asset('js/coming-soon.js') }}"></script>
 </body>
 </html>

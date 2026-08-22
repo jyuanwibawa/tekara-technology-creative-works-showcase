@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>404 - Page Not Found</title>
+    
+    <!-- CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -97,22 +101,9 @@
             }
         }
     </script>
-    <style>
-        .ambient-shadow {
-            box-shadow: 0 10px 40px rgba(0, 87, 195, 0.06);
-        }
-        .btn-hover-expand:hover {
-            transform: scale(1.02);
-        }
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-    </style>
+
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="{{ asset('css/404.css') }}">
 </head>
 <body class="bg-background h-screen w-screen overflow-hidden flex items-center justify-center font-body-md text-on-surface antialiased">
 
@@ -149,5 +140,7 @@
         </div>
     </main>
 
+    <!-- Page Scripts -->
+    <script src="{{ asset('js/404.js') }}"></script>
 </body>
 </html>

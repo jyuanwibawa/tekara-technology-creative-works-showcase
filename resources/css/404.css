@@ -1,0 +1,17 @@
+.ambient-shadow {
+    box-shadow: 0 10px 40px rgba(0, 87, 195, 0.06);
+}
+
+.btn-hover-expand:hover {
+    transform: scale(1.02);
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Akun;
 use App\Models\User;
 
 return [
@@ -16,7 +17,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
+        'guard' => env('AUTH_GUARD', 'akun'),
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
@@ -42,6 +43,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        // Guard utama untuk sistem login berdasarkan ERD
+        'akun' => [
+            'driver'   => 'session',
+            'provider' => 'akun',
+        ],
     ],
 
     /*
@@ -64,13 +71,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+            'model'  => env('AUTH_MODEL', User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // Provider untuk tabel akun (ERD)
+        'akun' => [
+            'driver' => 'eloquent',
+            'model'  => Akun::class,
+        ],
     ],
 
     /*

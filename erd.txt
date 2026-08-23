@@ -1,0 +1,60 @@
+=====================
+Keperluan Login
+======================
+@startuml ERD_Login
+skinparam linetype ortho
+
+entity "AKUN" as AKUN {
+  * id_akun : varchar <<PK>>
+  --
+  username : varchar
+  password_hash : varchar
+  role : varchar
+  id_referensi : varchar
+  status_aktif : varchar
+  terakhir_login : datetime
+}
+
+entity "MAHASISWA" as MAHASISWA {
+  * nim : varchar <<PK>>
+  --
+  id_prodi : varchar <<FK>>
+  nama_mahasiswa : varchar
+  angkatan : int
+  ipk : decimal
+  status_akademik : varchar
+}
+
+entity "DOSEN" as DOSEN {
+  * nidn : varchar <<PK>>
+  --
+  nama_dosen : varchar
+  email : varchar
+  jabatan_fungsional : varchar
+  bidang_keahlian : varchar
+}
+
+entity "ADMIN" as ADMIN {
+  * id_admin : varchar <<PK>>
+  --
+  nama_admin : varchar
+  email : varchar
+  unit_kerja : varchar
+  status_aktif : varchar
+}
+
+entity "MITRA_INDUSTRI" as MITRA_INDUSTRI {
+  * id_mitra : varchar <<PK>>
+  --
+  nama_mitra : varchar
+  jenis_mitra : varchar
+  kontak_person : varchar
+  alamat : varchar
+}
+
+AKUN ||--|| MAHASISWA : memiliki_akun
+AKUN ||--|| DOSEN : memiliki_akun
+AKUN ||--|| ADMIN : memiliki_akun
+AKUN ||--|| MITRA_INDUSTRI : memiliki_akun
+
+@enduml

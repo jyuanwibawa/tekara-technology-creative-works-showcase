@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Akun;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class AuthController extends Controller
@@ -42,26 +40,25 @@ class AuthController extends Controller
             'password.required' => 'Password wajib diisi.',
         ]);
 
-        // Cari akun berdasarkan username
-        $akun = Akun::where('username', $request->username)
-                    ->where('status_aktif', 'aktif')
-                    ->first();
-
-        // Verifikasi akun & password
-        if (! $akun || ! Hash::check($request->password, $akun->password_hash)) {
+        // Verifikasi kredensial dan simpan sesi melalui guard akun
+        $guard = Auth::guard('akun');
+        if (! $guard->attempt([
+            'username' => $request->username,
+            'status_aktif' => 'aktif',
+            'password' => $request->password,
+        ], $request->boolean('remember'))) {
             return back()
                 ->withInput($request->only('username'))
                 ->withErrors(['username' => 'Username atau password salah.']);
         }
 
-        // Login menggunakan guard 'akun'
-        Auth::guard('akun')->login($akun, $request->boolean('remember'));
+        // Regenerasi session untuk keamanan
+        $request->session()->regenerate();
+
+        $akun = $guard->user();
 
         // Update kolom terakhir_login
         $akun->update(['terakhir_login' => now()]);
-
-        // Regenerasi session untuk keamanan
-        $request->session()->regenerate();
 
         return $this->redirectByRole($akun->role);
     }

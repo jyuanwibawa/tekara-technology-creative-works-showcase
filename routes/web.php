@@ -24,6 +24,9 @@ Route::middleware('guest:akun')->group(function () {
 // -----------------------------------------------------------------------
 Route::middleware('auth:akun')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/coming-soon', function () {
+        return view('welcome');
+    })->name('coming-soon');
 });
 
 // -----------------------------------------------------------------------

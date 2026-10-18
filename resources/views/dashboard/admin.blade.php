@@ -12,7 +12,7 @@
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex antialiased overflow-x-hidden">
 	@include('dashboard.admin.navigation')
 
-	<main class="flex-1 min-w-0 md:ml-64 flex flex-col min-h-screen overflow-x-hidden">
+	<main class="flex-1 min-w-0 md:ml-64 pt-16 flex flex-col min-h-screen overflow-x-hidden">
 		@include('dashboard.admin.header')
 
 		<div class="flex-1 p-5 sm:p-8 bg-slate-50 overflow-y-auto pb-12">

@@ -56,6 +56,10 @@ Route::middleware('auth:akun')->group(function () {
         return view('dashboard.admin.kelas');
     })->name('admin.kelas-capstone');
 
+    Route::get('/admin/keanggotaan-tim', function () {
+        return view('dashboard.admin.keanggotaan-tim');
+    })->name('admin.keanggotaan-tim');
+
     Route::get('/admin/koordinator', [AdminCoordinatorController::class, 'index'])
         ->name('admin.koordinator');
     Route::post('/admin/koordinator', [AdminCoordinatorController::class, 'store'])

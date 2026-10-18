@@ -1,4 +1,4 @@
-<header class="flex justify-between items-center w-full px-5 sm:px-8 h-16 bg-white border-b border-slate-200/80 sticky top-0 z-30">
+<header class="fixed top-0 right-0 left-0 md:left-64 z-30 flex justify-between items-center px-5 sm:px-8 h-16 bg-white border-b border-slate-200/80">
     <div class="md:hidden flex items-center gap-3">
         <div class="h-9 w-9 rounded-full bg-[#173b72] border border-[#f37021] text-white flex items-center justify-center text-xs font-extrabold">UB</div>
         <span class="font-display text-lg text-slate-900 font-bold">Admin Portal</span>

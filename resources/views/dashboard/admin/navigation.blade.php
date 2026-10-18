@@ -42,8 +42,11 @@
             <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tim &amp; Presentasi</span>
         </div>
         <div class="flex flex-col gap-1">
-            <a class="flex items-center gap-3 text-slate-600 px-3.5 py-2.5 hover:bg-slate-50 hover:text-slate-900 transition-all rounded-xl" href="{{ route('coming-soon') }}">
-                <span class="material-symbols-outlined text-[20px] text-slate-400">groups</span>
+            <a class="relative flex items-center gap-3 {{ request()->routeIs('admin.keanggotaan-tim') ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }} rounded-xl px-3.5 py-2.5 transition-all group" href="{{ route('admin.keanggotaan-tim') }}" @if (request()->routeIs('admin.keanggotaan-tim')) aria-current="page" @endif>
+                @if (request()->routeIs('admin.keanggotaan-tim'))
+                    <span class="absolute left-0 top-1.5 bottom-1.5 w-1.5 bg-[#f37021] rounded-r-full"></span>
+                @endif
+                <span class="material-symbols-outlined text-[20px] {{ request()->routeIs('admin.keanggotaan-tim') ? 'text-[#f37021]' : 'text-slate-400 group-hover:text-slate-600' }}" @if (request()->routeIs('admin.keanggotaan-tim')) style="font-variation-settings: 'FILL' 1;" @endif>groups</span>
                 <span class="text-sm font-medium">Keanggotaan Tim</span>
             </a>
             <a class="flex items-center gap-3 text-slate-600 px-3.5 py-2.5 hover:bg-slate-50 hover:text-slate-900 transition-all rounded-xl" href="{{ route('coming-soon') }}">

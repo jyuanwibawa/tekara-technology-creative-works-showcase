@@ -60,6 +60,10 @@ Route::middleware('auth:akun')->group(function () {
         return view('dashboard.admin.keanggotaan-tim');
     })->name('admin.keanggotaan-tim');
 
+    Route::get('/admin/jadwal-presentasi', function () {
+        return view('dashboard.admin.jadwal-presentasi');
+    })->name('admin.jadwal-presentasi');
+
     Route::get('/admin/koordinator', [AdminCoordinatorController::class, 'index'])
         ->name('admin.koordinator');
     Route::post('/admin/koordinator', [AdminCoordinatorController::class, 'store'])

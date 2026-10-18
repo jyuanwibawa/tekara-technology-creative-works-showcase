@@ -76,8 +76,8 @@
     </nav>
 
     <div class="px-4 mt-auto flex flex-col gap-2 pt-4 border-t border-slate-100">
-        <a class="flex items-center gap-3 text-slate-600 px-4 py-2 hover:bg-slate-50 rounded-xl transition-all" href="{{ route('coming-soon') }}">
-            <span class="material-symbols-outlined text-[20px] text-slate-500">account_circle</span>
+        <a class="flex items-center gap-3 {{ request()->routeIs('admin.profil*') ? 'bg-orange-50 text-[#a04100] font-semibold' : 'text-slate-600 hover:bg-slate-50' }} px-4 py-2 rounded-xl transition-all" href="{{ route('admin.profil') }}" @if (request()->routeIs('admin.profil*')) aria-current="page" @endif>
+            <span class="material-symbols-outlined text-[20px] {{ request()->routeIs('admin.profil*') ? 'text-[#a04100]' : 'text-slate-500' }}">account_circle</span>
             <span class="text-sm font-medium">Profil Saya</span>
         </a>
         <form action="{{ route('logout') }}" method="POST">

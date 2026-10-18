@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminCoordinatorController;
 use App\Http\Controllers\AdminPartnerController;
+use App\Http\Controllers\AdminProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,11 @@ Route::middleware('auth:akun')->group(function () {
     Route::get('/admin/jadwal-presentasi', function () {
         return view('dashboard.admin.jadwal-presentasi');
     })->name('admin.jadwal-presentasi');
+
+    Route::get('/admin/profil', [AdminProfileController::class, 'show'])
+        ->name('admin.profil');
+    Route::put('/admin/profil', [AdminProfileController::class, 'update'])
+        ->name('admin.profil.update');
 
     Route::get('/admin/koordinator', [AdminCoordinatorController::class, 'index'])
         ->name('admin.koordinator');

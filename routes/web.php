@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminCoordinatorController;
+use App\Http\Controllers\AdminPartnerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +51,26 @@ Route::middleware('auth:akun')->group(function () {
         return view('dashboard.admin');
     })->name('admin.dashboard');
 
+    // Kelola Data Kelas Capstone
+    Route::get('/admin/kelas-capstone', function () {
+        return view('dashboard.admin.kelas');
+    })->name('admin.kelas-capstone');
+
+    Route::get('/admin/koordinator', [AdminCoordinatorController::class, 'index'])
+        ->name('admin.koordinator');
+    Route::post('/admin/koordinator', [AdminCoordinatorController::class, 'store'])
+        ->name('admin.koordinator.store');
+
     // Mitra Industri
+    Route::get('/admin/mitra-industri', [AdminPartnerController::class, 'index'])
+        ->name('admin.mitra-industri');
+    Route::post('/admin/mitra-industri', [AdminPartnerController::class, 'store'])
+        ->name('admin.mitra-industri.store');
+    Route::put('/admin/mitra-industri/{mitra}', [AdminPartnerController::class, 'update'])
+        ->name('admin.mitra-industri.update');
+    Route::delete('/admin/mitra-industri/{mitra}', [AdminPartnerController::class, 'destroy'])
+        ->name('admin.mitra-industri.destroy');
+
     Route::get('/mitra/dashboard', function () {
         return view('dashboard.mitra');
     })->name('mitra.dashboard');

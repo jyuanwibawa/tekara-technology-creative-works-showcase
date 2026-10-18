@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Dosen extends Model
 {
     /**
+     * Nama tabel yang digunakan.
+     */
+    protected $table = 'dosen';
+
+    /**
      * Primary key tabel dosen.
      */
     protected $primaryKey = 'nidn';

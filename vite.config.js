@@ -11,6 +11,18 @@ export default defineConfig({
                 // Halaman Login
                 'resources/css/auth/login.css',
                 'resources/js/auth/login.js',
+                // Coming Soon
+                'resources/css/coming-soon.css',
+                'resources/js/coming-soon.js',
+                // Error 404
+                'resources/css/404.css',
+                'resources/js/404.js',
+                // Dashboard Admin
+                'resources/css/dashboard/admin.css',
+                'resources/js/dashboard/admin.js',
+                'resources/js/dashboard/kelas.js',
+                'resources/js/dashboard/koordinator.js',
+                'resources/js/dashboard/mitra-industri.js',
             ],
             refresh: true,
         }),

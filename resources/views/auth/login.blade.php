@@ -8,42 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <style>
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .bg-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .login-card {
-            z-index: 10;
-            border: 4px solid #f97316;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Animasi shake untuk error */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%       { transform: translateX(-6px); }
-            40%       { transform: translateX(6px); }
-            60%       { transform: translateX(-4px); }
-            80%       { transform: translateX(4px); }
-        }
-        .shake { animation: shake 0.4s ease; }
-    </style>
+    @vite(['resources/css/auth/login.css', 'resources/js/auth/login.js'])
 </head>
 <body class="relative overflow-hidden text-gray-800">
 
@@ -197,59 +162,7 @@
     </main>
     <!-- END: MainContent -->
 
-    <script>
-        // ---------------------------------------------------------------
-        // Toggle show / hide password
-        // ---------------------------------------------------------------
-        const toggleBtn  = document.getElementById('toggle-password');
-        const pwdInput   = document.getElementById('password');
-        const iconEye    = document.getElementById('icon-eye');
-        const iconEyeOff = document.getElementById('icon-eye-off');
-
-        toggleBtn.addEventListener('click', () => {
-            const isHidden = pwdInput.type === 'password';
-            pwdInput.type           = isHidden ? 'text' : 'password';
-            iconEye.classList.toggle('hidden', isHidden);
-            iconEyeOff.classList.toggle('hidden', !isHidden);
-            toggleBtn.setAttribute('aria-label', isHidden ? 'Sembunyikan password' : 'Tampilkan password');
-        });
-
-        // ---------------------------------------------------------------
-        // Loading state saat form submit
-        // ---------------------------------------------------------------
-        const form    = document.getElementById('login-form');
-        const btnText = document.getElementById('btn-text');
-        const spinner = document.getElementById('spinner');
-        const btnLogin = document.getElementById('btn-login');
-
-        form.addEventListener('submit', () => {
-            btnLogin.disabled = true;
-            spinner.classList.remove('hidden');
-            btnText.textContent = 'Memproses...';
-        });
-
-        // ---------------------------------------------------------------
-        // Animasi shake pada card jika ada error
-        // ---------------------------------------------------------------
-        const errorAlert = document.getElementById('error-alert');
-        const loginCard  = document.getElementById('login-card');
-        if (errorAlert) {
-            loginCard.classList.add('shake');
-            loginCard.addEventListener('animationend', () => {
-                loginCard.classList.remove('shake');
-            }, { once: true });
-        }
-
-        // ---------------------------------------------------------------
-        // Auto-focus ke field pertama yang kosong / error
-        // ---------------------------------------------------------------
-        const usernameInput = document.getElementById('username');
-        if (!usernameInput.value) {
-            usernameInput.focus();
-        } else {
-            pwdInput.focus();
-        }
-    </script>
+    <!-- Page scripts loaded via Vite in <head> -->
 
 </body>
 </html>
